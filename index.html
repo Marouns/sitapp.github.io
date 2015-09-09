@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+
+
+	LatexIT.add('p',true);
+  </script>
+  <title>SitApp</title>
+</head>
+<body>
+  <div class="vspace"></div>
+  <div id="all">
+    <div id="header">
+      <h1>Project SitApp</h1>
+    </div>
+
+    <hr>
+
+    <div id="authors">
+      <p>
+		<br>
+		Maroun Sassine
+		<br>
+		Asher Yanai
+	  </p><p>
+    </p></div>
+
+	<h2>Project abstract</h2>
+	<p>
+	Project Sit is a project that will help every user to sit properly while using his computer. 
+	The application will notify the user when his sitting posture is wrong so he can correct it and keep his back and neck healthy. 
+	The application uses Intel RealSense camera to gather depth information and some features of its SDK.
+	</p>
+	<p>
+	The application starts by first recording and gathering the information of the best sitting posture the user can be in.
+	After gathering all information, the camera will get the live user sitting posture and compare it with the information saved from the recorded scene.
+	</p>
+
+	<h2>Introduction: </h2>
+	<p>
+	To estimate the shoulders' location,  we used the human face golden ratio.
+	The Intel SDK gave us 3 points ( right eye, left eye and chin).
+	</p>
+	<p>
+	
+	</p>
+	<img src="./Neufert_Big_Man.png" border="1" width="600px">
+	<p>
+	  *The body golden ratio.
+	</p>
+
+	<h2>How does it work ?</h2>
+	<p>
+	<ul>
+	<li>First of all, the app will search for a face using Intel RealSense SDK.</li>
+	<li>If a face was detected, get a segmented image using the SDK.</li>
+	<li>Now we can look for shoulders! </li>
+	<li>Transform the image to a binary image and find the edge of this image.</li>
+	<li>Now using the golden ratio and 3 points (left eye, right eye and chin), we can find intersection points of the circle with 
+	the shoulders.</li>
+	<li> Now we can search for the shoulders points and get the depth.
+	</ul>	
+	</p>
+	
+	
+	<h2>Algorithm picture sequence</h2>
+	<img src="./binary.png" border="1" width="600px">
+	<p> *The binary image </p>
+	
+	<img src="./faceShoulderRatio.jpg" border="1" width="600px">
+	<p> *Golden ratio used to find intersection points between circle and shoulders</p>
+
+
+	<p>
+	  After finding the intersection points, now we search in the region and find the farthest point from
+	  the linear line that intersects with the intersection point we found earlier and the beginning of the edge.
+	</p>
+	<img src="./shoulderDetection.jpg" border="1" width="600px">
+	
+	<p>The shoulder plot "edge function". </p>
+	
+	
+	
+	<img src="./shoulderedge.jpg" border="1" width="600px">
+	<p>Shoulder detection result </p>
+	<br>
+	<br>
+	<p> </p>
+	
+	<h2>Video</h2>
+	
+	<a href = ""> Video </a>
+
+	<h2>Source code</h2>
+	<p>
+	  <a href=""">Soure code</a>
+	  <br>
+	  
+	</p>
+	<p>
+	  Run <code>ProjectSit.exe</code>. 
+	  For more help see the readme file.
+	 
+	</p>
+	<h2>References</h2>
+	<p>
+	<ul>
+	<li>Intel RealSense SDK</li>
+	<li><a href ="http://www.researchgate.net/profile/Mohammad_Mahdi_Dehshibi/publication/220916680_Shoulder_Point_Detection_A_Fast_Geometric_Data_Fitting_Algorithm/links/0046353a034358c0d9000000.pdf">Shoulder detection article</li>
+	<li><a href = "https://en.wikipedia.org/wiki/Golden_ratio"> Golden ratio wikipedia </li>
+	</ul>
+
+	
+  </div><!-- id="all" -->
+  <div class="vspace"></div>
+
+
+
+</body></html>
